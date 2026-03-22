@@ -27,12 +27,15 @@ jobs:
 
       - name: Run tests
         run: npm test
-      
-      - name: Package the application 
+
+      - name: Build application
         run: npm run build
 
-      - name: Push to artifact in local github action 
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
+        with:
+          name: app-artifact
+          path: dist/
 
 #   docker:
 #     runs-on: ubuntu-latest
