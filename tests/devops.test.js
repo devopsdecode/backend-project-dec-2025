@@ -8,7 +8,7 @@ jest.mock('../src/services/aiService', () => ({
   analyzeK8sManifest: jest.requireActual('../src/services/aiService').analyzeK8sManifest,
 }));
 
-describe('GET /health',
+describe('GET /health', () => {
   it('returns 200 with status ok', async () => {
     const res = await request(app).get('/health');
     expect(res.status).toBe(200);
