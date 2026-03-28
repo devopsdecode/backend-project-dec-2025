@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-dec-2025
+  namespace: dec-2025-ns
+  labels:
+    app: nginx
+    env: qa
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    # rollingUpdate:
+    #   maxUnavailable: 1  # The maximum number of pods that can be unavailable during the update process.
+    #   maxSurge: 1 # The maximum number of pods that can be created above the desired number of pods during the update process.
+  selector:
+    matchLabels:
+      app: nginx
+      env: qa
+  template:
+    metadata:
+      name: nginx-pod-dec-2025
+      labels:
+        app: nginx
+        env: qa
+    spec:
+      #serviceAccountName: default
+      containers:
+      - name: nginx-container-dec-2025
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "1000m"
