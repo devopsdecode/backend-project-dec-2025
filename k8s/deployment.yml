@@ -27,7 +27,7 @@ spec:
       #serviceAccountName: default
       containers:
       - name: nginx-container-dec-2025
-        image: rohit213/project-1:v1.1
+        image: nginx:latest
         ports:
         - containerPort: 80
         resources:
